@@ -2,7 +2,6 @@
 model:
   structure:
     backbone: FashionResNet
-    img_size: (28, 28)
 
 optimizer:
   method: Adam
