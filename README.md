@@ -34,5 +34,7 @@ app.py
 Then, you can go to ```http://127.0.0.1:5000/``` to upload images and see the results.
 
 ## Author
+
 Oğul Can
+
 ogulcanogul@gmail.com
