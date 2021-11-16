@@ -3,7 +3,8 @@ framework = {
     'model': {
         'structure': {
             'backbone': 'FashionResNet',
-            'num_models': 1
+            'num_models': 1,
+
         }
     },
 
@@ -63,7 +64,7 @@ backbone_models = {
             }
 
         },
-        'input_parameters': {}
+        'input_parameters': {'img_size': (28,28)}
 
     }
 }
