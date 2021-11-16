@@ -1,8 +1,8 @@
 ---
 model:
   structure:
-    num_models: 1
     backbone: FashionResNet
+    img_size: (28, 28)
 
 optimizer:
   method: Adam
@@ -26,6 +26,8 @@ backbone_models:
     blocks: 2
     blocks_repeats: 1
     dropout_probability: 0.25
+  input_parameters:
+    img_size: (28,28)
 
 class_labels:
   0: "T-shirt/Top"
