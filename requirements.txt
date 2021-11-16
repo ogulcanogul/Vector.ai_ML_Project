@@ -1,0 +1,7 @@
+tensorflow==2.4.1
+numpy
+scikit-learn
+pillow
+tensorflow_addons
+pyyaml
+flask

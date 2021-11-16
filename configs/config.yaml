@@ -1,0 +1,44 @@
+---
+model:
+  structure:
+    num_models: 1
+    backbone: FashionResNet
+
+optimizer:
+  method: Adam
+  learning_rate: 1.0e-3
+  reduce_lr_on_plateau:
+    factor: 0.5
+    patience: 3
+    min_lr: 1.0e-5
+
+training:
+  max_epochs: 100
+  early_stopping_patience: 7
+  batch_size: 128
+
+validation:
+  batch_size: 128
+
+backbone_models:
+  FashionResNet:
+    stages: 3
+    blocks: 2
+    blocks_repeats: 1
+    dropout_probability: 0.25
+
+class_labels:
+  0: "T-shirt/Top"
+  1: "Trouser"
+  2: "Pullover"
+  3: "Dress"
+  4: "Coat"
+  5: "Sandal"
+  6: "Shirt"
+  7: "Sneaker"
+  8: "Bag"
+  9: "Ankle Boot"
+
+
+
+
