@@ -1,4 +1,4 @@
-# vectorAI_ML_Project
+# Vector.ai_ML_Project
 
 This is a multi-class image classifier on fashion MNIST dataset using a residual neural network (ResNet). 
 
