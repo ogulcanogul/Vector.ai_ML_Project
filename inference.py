@@ -23,9 +23,9 @@ config_params = getConfig(
     configs_path=path_to_config_parameters)
 
 
-
 model_name = 'FashionResNet'
 file_path = './testData/03_00931_01.png'
+
 test_data = Image.open(file_path)
 test_data = (asarray(test_data))
 test_data = np.expand_dims(test_data, axis=0)
@@ -34,6 +34,7 @@ img_size = eval(config_params['backbone_models']['input_parameters']['img_size']
 test_data = tf.image.resize(test_data, img_size)
 test_class = model_utils.inferenceModel(model_name, paths, test_data)
 test_class = test_class[0].numpy()
+
 print('The class of the test image is', config_params['class_labels'][test_class])
 
 
