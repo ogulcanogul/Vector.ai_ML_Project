@@ -42,7 +42,8 @@ class ImagePreprocessing(object):
 class FashionMNISTPreprocessing(ImagePreprocessing):
     def __init__(self, out_image_size=(28, 28), **kwargs):
         super(FashionMNISTPreprocessing, self).__init__(**kwargs)
-        self._out_image_size = out_image_size
+        print(kwargs)
+        self._out_image_size = kwargs['img_size']
         self.out_image_size = list(self._out_image_size) + [1]
 
     def trainPreprocess(self, image, **kwargs):
@@ -50,22 +51,25 @@ class FashionMNISTPreprocessing(ImagePreprocessing):
         # Pad 4 pixels on each dimension of feature map, done in mini-batch
 
         image_tensor = tf.cast(image,tf.float32)
-        #image_tensor = tf.image.resize_with_crop_or_pad(image_tensor, self._initial_resize[0], self._initial_resize[1])
+
+        if len(image_tensor.shape) > len(self._out_image_size):
+            image_tensor = tf.reduce_mean(image_tensor, axis=-1, keepdims=True)
+        image_tensor = tf.image.resize(image_tensor, self._out_image_size)
         #image_tensor = tf.image.random_crop(image_tensor, list(self._out_image_size))
         #image_tensor = tf.image.random_flip_left_right(image_tensor)
 
-        if len(image_tensor.shape) == 3:
-            image_tensor = tf.reduce_mean(image_tensor, axis=-1, keepdims=True)
+
 
         return image_tensor
     def testPreprocess(self, image, **kwargs):
         """pass image as is"""
 
         image_tensor = tf.cast(image,tf.float32)
-        #image_tensor = tf.image.resize_with_crop_or_pad(image_tensor, 40, 40)
-        #image_tensor = tf.image.resize_with_crop_or_pad(image_tensor, *self._out_image_size)
-        if len(image_tensor.shape) == 3:
+        if len(image_tensor.shape) > len(self._out_image_size):
             image_tensor = tf.reduce_mean(image_tensor, axis=-1, keepdims=True)
+        #image_tensor = tf.image.resize_with_crop_or_pad(image_tensor, 40, 40)
+        image_tensor = tf.image.resize(image_tensor, self._out_image_size)
+
 
         return image_tensor
 
